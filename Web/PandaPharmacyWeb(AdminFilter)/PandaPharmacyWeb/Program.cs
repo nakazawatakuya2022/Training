@@ -19,10 +19,9 @@ namespace PandaPharmacyWeb
             // ICategoryDataServiceが必要な時はDbCategoryDataServiceを使うようDIコンテナに登録
             builder.Services.AddTransient<ICategoryDataService, DbCategoryDataService>();
 
-            // IUserAccountDataServiceが必要な時はDbUserAccountDataServiceを使うようDIコンテナに登録
             builder.Services.AddTransient<IUserDataService, DbUserDataService>();
 
-            // セッション機能をサービス登録
+            // セッションの機能を設定（有効期限を30分にする）
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -38,20 +37,15 @@ namespace PandaPharmacyWeb
                 app.UseHsts();
             }
 
-            
-
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            
+            app.UseAuthorization();
 
             // セッションの利用を開始    
             app.UseSession();
-
-            app.UseAuthorization();
 
             app.MapRazorPages();
 
