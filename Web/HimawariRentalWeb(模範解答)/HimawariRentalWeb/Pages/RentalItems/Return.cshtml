@@ -1,0 +1,29 @@
+﻿@page
+@model HimawariRentalWeb.Pages.RentalItems.ReturnModel
+@{
+    ViewData["Title"] = "返却処理";
+}
+
+<h1>返却処理</h1>
+<hr />
+
+<form method="post">
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.RentalItemId" class=" form-label">レンタル品ID</label>
+        <input asp-for="@Model.RentalItem.RentalItemId" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.ManagementCode" class="form-label">管理番号</label>
+        <input asp-for="@Model.RentalItem.ManagementCode" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.ItemName" class="form-label">品名</label>
+        <input asp-for="@Model.RentalItem.ItemName" class="form-control" readonly />
+    </div>
+    <button type="submit" class="btn btn-secondary">返却</button>
+</form>
+<hr />
+<div>
+    <a class="btn btn-outline-primary" href="/RentalItems/Detail?RentalItemId=@Model.RentalItem.RentalItemId">レンタル品詳細に戻る</a>
+    <a class="btn btn-outline-primary" href="/RentalItems/Index">レンタル品一覧に戻る</a>
+</div>

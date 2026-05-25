@@ -1,0 +1,22 @@
+﻿@page
+@model PandaPharmacyWeb.Pages.LoginModel
+@{
+}
+
+<form method="post">
+    <label asp-for="UserName" class="form-label">ユーザ名</label>
+    <input asp-for="UserName" class="form-control">
+    <span asp-validation-for="UserName" class="text-danger"></span>
+
+    <label asp-for="Password" class="form-label">パスワード</label>
+    <input asp-for="Password" class="form-control">
+    <span asp-validation-for="Password" class="text-danger"></span>
+
+    @* 以下のif文を追加 *@
+    @if (Model.LoginFailed)
+    {
+        <label class="text-danger">ユーザ名またはパスワードが間違っています</label>
+    }
+
+    <button type="submit" class="btn btn-primary">ログイン</button>
+</form>

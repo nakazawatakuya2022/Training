@@ -1,0 +1,54 @@
+﻿@page
+@model HimawariRentalWeb.Pages.RentalItems.DeleteModel
+@{
+    ViewData["Title"] = "レンタル品削除";
+}
+
+<h1>レンタル品削除</h1>
+<hr />
+
+<form method="post">
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.RentalItemId" class=" form-label">レンタル品ID</label>
+        <input asp-for="@Model.RentalItem.RentalItemId" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.ManagementCode" class="form-label">管理番号</label>
+        <input asp-for="@Model.RentalItem.ManagementCode" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.ItemName" class="form-label">品名</label>
+        <input asp-for="@Model.RentalItem.ItemName" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.Maker" class="form-label">メーカー</label>
+        <input asp-for="@Model.RentalItem.Maker" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.StorageLocation" class="form-label">保管場所</label>
+        <input asp-for="@Model.RentalItem.StorageLocation" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.PurchaseDate" class="form-label">購入日</label>
+        <input asp-for="@Model.RentalItem.PurchaseDate" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.PurchasePrice" class="form-label">購入価格</label>
+        <input asp-for="@Model.RentalItem.PurchasePrice" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.Memo" class="form-label">メモ</label>
+        <input asp-for="@Model.RentalItem.Memo" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.CategoryName" class="form-label">カテゴリ</label>
+        <input asp-for="@Model.RentalItem.CategoryName" class="form-control" readonly />
+    </div>
+    <button type="submit" class="btn btn-secondary">削除</button>
+</form>
+
+<hr />
+<div>
+    <a class="btn btn-outline-primary" href="/RentalItems/Index">一覧に戻る</a>
+</div>
+

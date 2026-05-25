@@ -1,0 +1,22 @@
+﻿@page
+@using HimawariRentalWeb.Models;
+@model IndexModel
+@{
+    ViewData["Title"] = "Topページ";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @{
+        UserAccount? userAccount = (UserAccount?)Model.HttpContext.Items["userAccount"];
+        if (userAccount != null)
+        {
+            <h2>@userAccount.StaffId</h2>
+            <h2>@(userAccount.StaffName)</h2>
+            @if (userAccount.IsAdmin())
+            {
+                <h2>(管理者)</h2>
+            }
+        }
+    }
+</div>

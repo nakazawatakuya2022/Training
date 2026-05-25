@@ -1,0 +1,19 @@
+﻿@page
+@using PandaPharmacyWeb.Models;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @{
+        // 取得する際にはキャストが必要
+        User? userAccount = (User?)Model.HttpContext.Items["userAccount"];
+        if (userAccount != null)
+        {
+            <h2>@userAccount.LastName @userAccount.FirstName さん</h2>
+            <h2>(@userAccount.UserName)</h2>
+        }
+    }
+</div>

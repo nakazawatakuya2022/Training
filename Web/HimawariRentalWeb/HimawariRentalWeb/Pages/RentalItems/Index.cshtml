@@ -1,0 +1,55 @@
+﻿@page
+@using HimawariRentalWeb.Models
+@model HimawariRentalWeb.Pages.RentalItems.IndexModel
+@{
+    ViewData["Title"] = "レンタル品一覧";
+}
+
+<h1>レンタル品一覧</h1>
+
+<a class="mb-2 btn btn-primary" href="/RentalItems/Create">新規作成</a>
+
+<form method="get">
+    <input asp-for="@Model.Search" placeholder="キーワードで検索" />
+    <input asp-for="@Model.IsRentalOnly" />
+    <label asp-for="@Model.IsRentalOnly">レンタル中のみ</label>
+    <button type="submit" class="btn btn-secondary">検索</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>レンタル品ID</th>
+            <th>管理番号</th>
+            <th>品名</th>
+            <th>メーカー</th>
+            <th>保管場所</th>
+            <th>カテゴリ</th>
+            <th>状態</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RentalItems != null)
+        {
+            @foreach (RentalItem item in Model.RentalItems)
+            {
+                <tr>
+                    @* TODO：以下のXXXの部分を正しく書き直すこと *@
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="/RentalItems/Detail?RentalItemId=@item.RentalItemId">詳細</a>
+                        <a class="btn btn-outline-primary" href="/RentalItems/Edit?RentalItemId=@item.RentalItemId">編集</a>
+                        <a class="btn btn-outline-primary" href="/RentalItems/Delete?RentalItemId=@item.RentalItemId">削除</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

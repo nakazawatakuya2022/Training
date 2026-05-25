@@ -1,0 +1,69 @@
+﻿@page
+@using HimawariRentalWeb.Models
+@model HimawariRentalWeb.Pages.RentalItems.EditModel
+@{
+    ViewData["Title"] = "レンタル品編集";
+}
+
+<h1>レンタル品編集</h1>
+<hr />
+
+<form method="post">
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.RentalItemId" class=" form-label">レンタル品ID</label>
+        <input asp-for="@Model.RentalItem.RentalItemId" class="form-control" readonly />
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.ManagementCode" class="form-label">管理番号</label>
+        <input asp-for="@Model.RentalItem.ManagementCode" class="form-control" />
+        <span asp-validation-for="@Model.RentalItem.ManagementCode" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.ItemName" class="form-label">品名</label>
+        <input asp-for="@Model.RentalItem.ItemName" class="form-control" />
+        <span asp-validation-for="@Model.RentalItem.ItemName" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.Maker" class="form-label">メーカー</label>
+        <input asp-for="@Model.RentalItem.Maker" class="form-control" />
+        <span asp-validation-for="@Model.RentalItem.Maker" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.StorageLocation" class="form-label">保管場所</label>
+        <input asp-for="@Model.RentalItem.StorageLocation" class="form-control" />
+        <span asp-validation-for="@Model.RentalItem.StorageLocation" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.PurchaseDate" class="form-label">購入日</label>
+        <input asp-for="@Model.RentalItem.PurchaseDate" class="form-control" />
+        <span asp-validation-for="@Model.RentalItem.PurchaseDate" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.PurchasePrice" class="form-label">購入価格</label>
+        <input asp-for="@Model.RentalItem.PurchasePrice" class="form-control" />
+        <span asp-validation-for="@Model.RentalItem.PurchasePrice" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.Memo" class="form-label">メモ</label>
+        <input asp-for="@Model.RentalItem.Memo" class="form-control" />
+        <span asp-validation-for="@Model.RentalItem.Memo" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="@Model.RentalItem.CategoryId" class="form-label">カテゴリ</label>
+        <select asp-for="@Model.RentalItem.CategoryId" class="form-select">
+            @foreach (Category item in Model.Categories)
+            {
+                <option label="@item.CategoryName" value="@item.CategoryId" />
+            }
+        </select>
+        <span asp-validation-for="@Model.RentalItem.CategoryId" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="@Model.RentalItem.RentalFlag" />
+    <button type="submit" class="btn btn-secondary">保存</button>
+</form>
+
+<hr />
+<div>
+    <a class="btn btn-outline-primary" href="/RentalItems/Index">一覧に戻る</a>
+</div>
+

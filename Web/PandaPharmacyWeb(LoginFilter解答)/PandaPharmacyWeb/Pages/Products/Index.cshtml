@@ -1,0 +1,46 @@
+﻿@page
+@using PandaPharmacyWeb.Models;
+@model PandaPharmacyWeb.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "商品一覧";
+}
+
+<h1>商品一覧</h1>
+
+<a class="mb-2 btn btn-primary" href="/Products/Create">新規作成</a>
+
+<form method="get">
+    <div class="form-group mb-2">
+        <input asp-for="Search" placeholder="キーワードで検索" />
+        <button type="submit" class="btn btn-secondary">検索</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>カテゴリ名</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Products != null)
+        {
+            @foreach (Product item in Model.Products)
+            {
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.CategoryName</td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="/Products/Detail?ProductId=@item.ProductId">詳細</a>
+                        <a class="btn btn-outline-primary" href="/Products/Edit?ProductId=@item.ProductId">編集</a>
+                        <a class="btn btn-outline-primary" href="/Products/Delete?ProductId=@item.ProductId">削除</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

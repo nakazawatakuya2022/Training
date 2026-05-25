@@ -1,0 +1,28 @@
+﻿@page
+@model LoginModel
+@{
+}
+
+<form method="post">
+    <div class="mb-2 col-6 offset-3">
+        <label asp-for="@Model.StaffId" class="form-label">ユーザ名</label>
+        <input asp-for="@Model.StaffId" class="form-control">
+        <span asp-validation-for="@Model.StaffId" class="text-danger"></span>
+    </div>
+    <div class="mb-4 col-6 offset-3">
+        <label asp-for="@Model.Password" class="form-label">パスワード</label>
+        <input asp-for="@Model.Password" class="form-control">
+        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+    </div>
+    @if (Model.LoginFailed)
+    {
+        <div class="mb-4 text-center">
+            <label class="text-danger">
+                ユーザ名またはパスワードが間違っています
+            </label>
+        </div>
+    }
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">ログイン</button>
+    </div>
+</form>
