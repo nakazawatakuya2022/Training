@@ -1,0 +1,20 @@
+﻿@page
+@model WebSampleApp.Pages.S14RazorTestModel
+@{
+}
+
+@if (Request.Method == "GET")
+{
+    <form method="post">
+        <div>
+            <label asp-for="FullName">名前を入力してください:</label>
+            <input asp-for="FullName">
+        </div>
+        <button type="submit">送信</button>
+    </form>
+}
+else if (Request.Method == "POST")
+{
+    <p>こちらは本来届くはずのページです。</p>
+    <p>届くデータは@(Model.FullName)</p>
+}

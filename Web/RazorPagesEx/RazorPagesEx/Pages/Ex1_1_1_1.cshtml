@@ -1,0 +1,34 @@
+﻿@page
+@model RazorPagesEx.Pages.Ex1_1_1_1Model
+@{
+    ViewData["Title"] = "Ex1_1_1_1";
+}
+<!DOCTYPE html>
+
+<title>画像ページ</title>
+
+<style>
+    body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    img {
+        width: 400px;
+        border: 3px solid gray;
+    }
+
+    a {
+        display: block;
+        margin-top: 20px;
+    }
+</style>
+
+<h1>画像ページ</h1>
+
+<img src="~/images/cat.png" alt="サンプル画像">
+
+<a href="profile.html">
+    プロフィールページへ戻る
+</a>

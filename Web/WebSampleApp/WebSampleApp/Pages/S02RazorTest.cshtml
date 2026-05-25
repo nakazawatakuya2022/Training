@@ -1,0 +1,99 @@
+﻿@page
+@model WebSampleApp.Pages.S02RazorTestModel
+
+<h3>ifで条件に応じたタグを表示する</h3>
+
+@{
+    int num = -1;
+}
+
+@if (num > 0)
+{
+    <p>正の数</p>
+}
+else if (num == 0)
+{
+    <p>0</p>
+}
+else
+{
+    <p>負の数</p>
+}
+
+<hr />
+
+<h3>switchで条件に応じたタグを表示する</h3>
+
+@{
+    int value = 100;
+}
+
+@switch (value)
+{
+    case 1:
+        <p>値は1</p>
+        break;
+    case 1337:
+        <p>値は1337</p>
+        break;
+    default:
+        <p>値は1でも1337でもない</p>
+        break;
+}
+
+<hr />
+
+<h3>forで繰り返しタグを表示する</h3>
+
+@for (int i = 0; i < 10; i++)
+{
+    <p>iは@(i)です。</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>No1</th>
+            <th>No2</th>
+            <th>No3</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int j = 0; j < 10; j++)
+        {
+            <tr>
+                <td>@(j)</td>
+                <td>@(j + 1)</td>
+                <td>@(j + 2)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h3>whileで繰り返しタグを表示する</h3>
+
+@{
+    int k = 0;
+}
+
+@while (k < 10)
+{
+    <p>iは@(k)です。</p>
+    k++;
+}
+
+<hr />
+
+<h3>foreachで繰り返しタグを表示する</h3>
+
+@{
+    string[] names = { "内田太郎", "田中次郎", "鈴木三郎" };
+}
+
+@foreach (string name in names)
+{
+    <p>名前は@(name)です</p>
+}
+

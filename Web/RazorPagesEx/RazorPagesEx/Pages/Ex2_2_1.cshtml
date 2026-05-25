@@ -1,0 +1,21 @@
+﻿@page
+@model RazorPagesEx.Pages.Ex2_2_1Model
+
+@{
+    ViewData["Title"] = "Ex2_2_1";
+}
+
+@if (Request.Method == "GET")
+{
+    <h2>足し算をする値を2つ入力</h2>
+    <form method="post">
+        <input asp-for="@(Model.Num1)" />
+        <input asp-for="@(Model.Num2)" />
+        <button type="submit">計算</button>
+    </form>
+}
+else if (Request.Method == "POST")
+{
+    <h2>足し算の結果</h2>
+    @Model.Keisan()
+}

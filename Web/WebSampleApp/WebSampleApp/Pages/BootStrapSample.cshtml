@@ -1,0 +1,68 @@
+﻿@page
+@model WebSampleApp.Pages.BootStrapSampleModel
+@{
+}
+
+<h1>お問い合わせフォーム</h1>
+<p class="text-danger">以下の項目をご入力ください。</p>
+<hr>
+
+<form action="#" method="post">
+    <h2>基本情報</h2>
+    <label for="name" class="form-label">お名前:</label>
+    <input type="text" id="name" name="name" class="form-control"><br />
+
+    <label for="email" class="form-label">メールアドレス:</label>
+    <input type="email" id="email" name="email" class="form-control"><br />
+
+    <h2>性別</h2>
+    <input type="radio" id="male" name="gender" value="male" checked class="form-check-input">
+    <label for="male" class="form-label">男性</label><br>
+    <input type="radio" id="female" name="gender" value="female" class="form-check-input">
+    <label for="female" class="form-label">女性</label><br>
+
+    <h2>興味のある分野(複数選択可)</h2>
+    <input type="checkbox" id="sports" name="interest" value="sports" class="form-check-input">
+    <label for="sports" class="form-label">スポーツ</label><br>
+    <input type="checkbox" id="music" name="interest" value="music" class="form-check-input">
+    <label for="music" class="form-label">音楽</label><br>
+
+    <h2>お住まいの地域</h2>
+    <label for="area" class="form-label">地域:</label>
+    <select id="area" name="area" class="form-select">
+        <option value="hokkaido">北海道</option>
+        <option value="tohoku">東北</option>
+        <option value="kanto" selected>関東</option>
+        <option value="chubu">中部</option>
+        <option value="kansai">関西</option>
+        <option value="chugoku">中国</option>
+        <option value="shikoku">四国</option>
+        <option value="kyushu">九州・沖縄</option>
+    </select>
+
+    <br />
+    <button type="reset" class="btn btn-danger">リセットする</button>
+    <button type="submit" class="btn btn-primary">送信する</button>
+</form>
+
+<table border="1" class="table mt-5">
+    <thead>
+        <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>価格</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>りんご</td>
+            <td>100円</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>みかん</td>
+            <td>80円</td>
+        </tr>
+    </tbody>
+</table>

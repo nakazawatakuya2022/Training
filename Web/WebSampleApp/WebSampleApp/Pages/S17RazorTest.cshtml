@@ -1,0 +1,7 @@
+﻿@page
+@model WebSampleApp.Pages.S17RazorTestModel
+@{
+}
+
+<p>このセッションでのアクセス回数：</p>
+<p>@( HttpContext.Session.GetInt32("counter") )</p>

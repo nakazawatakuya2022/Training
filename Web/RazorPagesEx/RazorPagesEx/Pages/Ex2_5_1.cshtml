@@ -1,0 +1,18 @@
+﻿@page
+@model RazorPagesEx.Pages.Ex2_5_1Model
+
+<h2>入力画面</h2>
+
+<form method="post">
+    <div>
+        <label>名前</label>
+        <input asp-for="Name" />
+    </div>
+
+    <div>
+        <label>メッセージ</label>
+        <input asp-for="Message" />
+    </div>
+
+    <button type="submit">送信</button>
+</form>

@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Form22.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form21.cs" />
+    <Compile Update="Form54.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form53.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form44.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form43.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form34.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form33.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form73EditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form72ShowEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form72.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form71.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form62.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form61.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form52.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form51.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form42.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form41.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form31.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form32.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form23.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form13.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

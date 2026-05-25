@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<a href="/BootStrapSample">BootStrapSample</a>
+<br />
+<hr />
+<a href="/S01RazorTest">Razor構文の書き方（S01RazorTest）</a>
+<br />
+<hr />
+<a href="/S02RazorTest">Razor構文の分岐と繰り返し（S02RazorTest）</a>
+<br />
+<hr />
+<a href="/S03RazorTest">GETの送受信方送（S03RazorTest）</a>
+<br />
+<hr />
+<a href="/S04RazorTest?companyName=株式会社○○&productId=23">クエリパラメータ（S04RazorTest）</a>
+<br />
+<br />
+<form action="S04RazorTest" method="get">
+    <p>会社名と商品番号を入力して商品ページを表示します。（S04RazorTest）</p>
+
+    <label for="companyName" class="form-label">会社名：</label>
+    <input type="text" id="companyName" name="companyName" class="form-control" />
+
+    <label for="productId" class="form-label">商品番号：</label>
+    <input type="text" id="productId" name="productId" class="form-control" />
+
+    <button type="submit" class="btn btn-primary mt-2">検索</button>
+</form>
+<br />
+<hr />
+<a href="/S05RazorTest">POSTの送受信方法（S05RazorTest）</a>
+<br />
+<hr />
+<a href="/S12RazorTest">送信先の変更（asp-page）（S12RazorTest）</a>
+<br />
+<hr />
+<a href="/S13RazorTest">GETでのBindProperty（S13RazorTest）</a>
+<br />
+<hr />
+<a href="/S14RazorTest">リダイレクトのやり方（S14RazorTest）</a>
+<br />
+<hr />
+<a href="/S15RazorTest">検証属性の書き方（S15RazorTest）</a>
+<br />
+<hr />
+<a href="/S16RazorTest">セッションがなかったら（S16RazorTest）</a>
+<br />
+<hr />
+<a href="/S17RazorTest">セッションへのデータの保存1（S17RazorTest）</a>
+<br />
+<hr />
+<a href="/S18RazorTest">セッションへのデータの保存2（S18RazorTest）</a>
+<br />
+<hr />
+<a href="/S18RazorTestEx01">S18RazorTestEx01へ</a>
+<br />
+<hr />
+<a href="/S18RazorTestEx02">S18RazorTestEx02へ</a>
+<br />
+<hr />
+<a href="/S19RazorTest">フィルターの書き方（S19RazorTest）</a>
+<br />
+<hr />

@@ -1,0 +1,18 @@
+﻿@page
+@model RazorPagesEx.Pages.Ex2_2_3Model
+@{
+    ViewData["Title"] = "Ex2_2_3";
+}
+
+@if (@Model.Keyword != null)
+{
+    <p>入力されたキーワードは@(Model.Keyword)です。</p>
+}
+
+<form method="get">
+    
+    <label asp-for="@Model.Keyword">キーワード</label>
+    <input asp-for="@Model.Keyword" />
+    
+    <button type="submit">検索</button>
+</form>

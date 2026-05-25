@@ -1,0 +1,29 @@
+﻿@page
+@model WebSampleApp.Pages.S18RazorTestEx02Model
+
+@{
+    ViewData["Title"] = "S18RazorTestEx02";
+}
+
+<h2>年齢をセッションに保存</h2>
+
+<form method="post">
+
+    <label asp-for="Age">
+        年齢を入力してください：
+    </label>
+
+    <input asp-for="Age" />
+
+    <button type="submit">
+        保存
+    </button>
+
+</form>
+
+@if (Model.Age != null)
+{
+    <p>
+        年齢：@Model.Age
+    </p>
+}

@@ -1,0 +1,25 @@
+﻿@page
+@model WebSampleApp.Pages.S01RazorTestModel
+@{
+    ViewData["Title"] = "Home page";
+    string message = "Hello";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@*検証ツールで表示されないコメント*@
+<!-- 検証ツールで表示されるコメント -->
+<p>現在の日付時刻：@(DateTime.Now.ToString("yyyy年MM月dd日 hh時mm分ss秒"))</p>
+
+@{
+    int number = 77;
+    <p>HTMLを普通に書いてもOK</p>
+    <p>messageは@(message)でnumberは@(number)です。</p>
+}
+
+<p>messageは@(message)でnumberは@(number)です。</p>
+
+<p>@@自体を表示するには2個書く</p>

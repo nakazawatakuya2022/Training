@@ -1,0 +1,13 @@
+﻿@page
+@model WebSampleApp.Pages.S15RazorTestModel
+@{
+}
+
+<form method="post">
+    <div>
+        <label asp-for="Age">年齢を入力してください：</label>
+        <input asp-for="Age" /><br />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+    <button type="submit">送信</button>
+</form>

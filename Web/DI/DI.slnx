@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DI0/DI0.csproj" />
+  <Project Path="DI1/DI1.csproj" />
+  <Project Path="DI2/DI2.csproj" />
+</Solution>

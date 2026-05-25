@@ -1,0 +1,6 @@
+﻿@{
+    var pagePath = ViewContext.RouteData.Values["page"]?.ToString();
+    var fullPath = $"Pages{pagePath}.cshtml";
+}
+
+<p>フルパス: @fullPath</p>

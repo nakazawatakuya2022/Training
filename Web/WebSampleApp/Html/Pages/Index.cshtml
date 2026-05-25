@@ -1,0 +1,65 @@
+﻿@page
+
+<h1>マイショップへようこそ</h1>
+<p class="a">～当店のおすすめ商品をご紹介します～</p>
+
+<hr />
+
+<h2>おすすめ商品一覧</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>価格</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Tシャツ</td>
+            <td>1500円</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>ジーンズ</td>
+            <td>3500円</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>スニーカー</td>
+            <td>5000円</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr />
+
+<h2>お問い合わせ</h2>
+
+<form method="post">
+    <label for="name">お名前:</label>
+    <input type="text" id="name" name="name" />
+    <br />
+
+    <label for="email">メールアドレス:</label>
+    <input type="email" id="email" name="email" />
+    <br />
+
+    <p>お問い合わせ内容:</p>
+
+    <input type="radio" id="product" name="type" value="product" />
+    <label for="product">商品について</label>
+    <br />
+
+    <input type="radio" id="haisou" name="type" value="haisou" />
+    <label for="haisou">配送について</label>
+    <br />
+
+    <input type="radio" id="other" name="type" value="other" />
+    <label for="other">その他</label>
+    <br /><br />
+
+    <button type="submit">送信</button>
+</form>

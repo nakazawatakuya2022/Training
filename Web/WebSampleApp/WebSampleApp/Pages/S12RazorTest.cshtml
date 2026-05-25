@@ -1,0 +1,12 @@
+﻿@page
+@model WebSampleApp.Pages.S12RazorTestModel
+@{
+}
+
+<form method="post" asp-page="/S12RazorTestResult">
+    <div>
+        <label asp-for="@Model.FullName">名前を入力してください:</label>
+        <input asp-for="@Model.FullName">
+    </div>
+    <button type="submit">送信</button>
+</form>

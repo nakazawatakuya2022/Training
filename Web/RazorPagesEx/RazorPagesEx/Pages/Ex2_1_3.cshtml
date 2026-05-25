@@ -1,0 +1,42 @@
+﻿@page
+@model RazorPagesEx.Pages.Ex2_1_3Model
+@{
+    ViewData["Title"] = "Ex2_1_3";
+}
+<h3>tableタグを使って表を表示</h3>
+
+
+@{
+    string[] names = { "山田太郎", "鈴木花子", "佐藤次郎" };
+}
+
+<style>
+    .my-table {
+        background-color: #f0f8ff;
+    }
+
+    .my-table th,
+    .my-table td {
+        border: 2px solid black;
+        padding: 20px;
+
+    }
+</style>
+
+<table class="my-table">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>名前</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < names.Length; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@names[i]</td>
+            </tr>
+        }
+    </tbody>
+</table>

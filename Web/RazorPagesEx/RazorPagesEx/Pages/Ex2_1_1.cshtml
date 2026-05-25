@@ -1,0 +1,13 @@
+﻿@page
+@model RazorPagesEx.Pages.Ex2_1_1Model
+@{
+    ViewData["Title"] = "Ex2_1_1";
+}
+<h3>繰り返しで０～１０まで表示</h3>
+
+@{
+    for(int i = 0; i <= 10; i++)
+    {
+        <p>@(i)</p>
+    }
+}

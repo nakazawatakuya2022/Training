@@ -1,0 +1,22 @@
+﻿@page
+@model RazorPagesEx.Pages.Ex2_3_1Model
+
+@{
+    ViewData["Title"] = "Ex2_3_1";
+}
+
+<h2>リダイレクト元</h2>
+
+<p>こちらはリダイレクト元です。</p>
+
+<form method="get">
+
+    <label asp-for="FullName">名前</label>
+    <input asp-for="FullName" />
+
+    <button type="submit"
+            class="btn btn-primary">
+        リダイレクト
+    </button>
+
+</form>

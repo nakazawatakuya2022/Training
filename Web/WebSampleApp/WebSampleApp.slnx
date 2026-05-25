@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Html/Html.csproj" />
+  <Project Path="HtmlPractice/HtmlPractice.csproj" />
+  <Project Path="WebApplication1/WebApplication1.csproj" />
+  <Project Path="WebSampleApp/WebSampleApp.csproj" />
+</Solution>

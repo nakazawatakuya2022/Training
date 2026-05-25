@@ -1,0 +1,39 @@
+﻿@page
+@using PandaPharmacyWeb.Models
+@model PandaPharmacyWeb.Pages.Orders.IndexModel
+
+<h1>注文一覧</h1>
+
+<a class="btn btn-primary"
+   href="/Orders/Create">
+    新規作成
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>注文ID</th>
+            <th>注文日</th>
+            <th>顧客番号</th>
+            <th>商品ID</th>
+            <th>数量</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Order item in Model.Orders)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.OrderDate</td>
+                <td>@item.CustomerNo</td>
+                <td>@item.ProductId</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <a class="btn btn-outline-primary" href="/Orders/Detail?OrderId=@item.OrderId">詳細</a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

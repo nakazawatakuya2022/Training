@@ -1,0 +1,27 @@
+﻿@page
+@model WebSampleApp.Pages.S05RazorTestModel
+@{
+}
+
+@if (Request.Method == "GET")
+{
+    <h3>お問い合わせフォーム</h3>
+
+    <form method="post">
+        <p>お問い合わせ内容を入力してください。</p>
+        @*
+        <label for="inquiry" class="form-label">内容：</label>
+        <input type="text" id="inquiry" name="Inquiry" class="form-control" />
+        *@
+        <label asp-for="@(Model.Inquiry)" class="form-label">内容</label>
+        <input asp-for="@(Model.Inquiry)" class="form-control"/>
+
+
+        <button type="submit" class="btn btn-primary mt-2">検索</button>
+    </form>
+}
+else if (Request.Method == "POST")
+{
+    <p>お問い合わせを受け付けました。</p>
+    <p>内容：@(Model.Inquiry)</p>
+}

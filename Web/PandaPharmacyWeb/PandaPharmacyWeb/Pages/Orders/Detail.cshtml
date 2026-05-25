@@ -1,0 +1,48 @@
+﻿@page
+@model PandaPharmacyWeb.Pages.Orders.DetailModel
+
+@{
+    ViewData["Title"] = "注文詳細";
+}
+
+<h1>注文詳細</h1>
+<hr />
+
+<div class="mb-2">
+    <label asp-for="Order.OrderId" class="form-label">注文ID</label>
+    <input asp-for="Order.OrderId" class="form-control" readonly />
+</div>
+
+<div class="mb-2">
+    <label asp-for="Order.OrderDate" class="form-label">注文日</label>
+    <input asp-for="Order.OrderDate" class="form-control" readonly />
+</div>
+
+<div class="mb-2">
+    <label asp-for="Order.CustomerNo" class="form-label">顧客番号</label>
+    <input asp-for="Order.CustomerNo" class="form-control" readonly />
+</div>
+
+<div class="mb-2">
+    <label asp-for="Order.ProductId" class="form-label">商品ID</label>
+    <input asp-for="Order.ProductId" class="form-control" readonly />
+</div>
+
+<div class="mb-2">
+    <label asp-for="Order.Quantity" class="form-label">数量</label>
+    <input asp-for="Order.Quantity" class="form-control" readonly />
+</div>
+
+<hr />
+
+<div>
+    <a class="btn btn-outline-primary"
+       href="/Orders/Edit?OrderId=@Model.Order.OrderId">
+        編集
+    </a>
+
+    <a class="btn btn-secondary"
+       href="/Orders/Index">
+        戻る
+    </a>
+</div>

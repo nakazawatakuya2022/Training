@@ -1,0 +1,24 @@
+﻿@page
+@model RazorPagesEx.Pages.Ex2_3_2Model
+
+@{
+    ViewData["Title"] = "Ex2_3_2";
+}
+
+<h2>足し算をする値を2つ入力</h2>
+
+<form method="post">
+
+    <div>
+        <input asp-for="Num1" />
+    </div>
+
+    <div>
+        <input asp-for="Num2" />
+    </div>
+
+    <button type="submit">
+        計算
+    </button>
+
+</form>
