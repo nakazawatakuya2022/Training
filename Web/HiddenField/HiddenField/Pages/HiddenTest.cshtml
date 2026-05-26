@@ -1,0 +1,23 @@
+﻿@page
+@model HiddenField.Pages.HiddenTestModel
+@{
+}
+<form method="post">
+    <div>
+        <label asp-for="@Model.Id">ID</label>
+        <input asp-for="@Model.Id" />
+    </div>
+    <div>
+        <label asp-for="@Model.Readonly">readonly</label>
+        <input asp-for="@Model.Readonly" readonly />
+    </div>
+    <div>
+        <label asp-for="@Model.Disabled">disabled</label>
+        <input asp-for="@Model.Disabled" disabled />
+    </div>
+    <div>
+        <label asp-for="@Model.Hidden">hidden</label>
+        <input asp-for="@Model.Hidden" type="hidden" />
+    </div>
+    <button type="submit">送信</button>
+</form>

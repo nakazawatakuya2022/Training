@@ -1,0 +1,55 @@
+﻿@page
+@using UminekoWeb.Models
+@model UminekoWeb.Pages.Books.IndexModel
+@{
+    ViewData["Title"] = "蔵書一覧";
+}
+
+<h1>蔵書一覧</h1>
+
+<a class="mb-2 btn btn-primary" href="/Books/Create">新規作成</a>
+
+<form method="get">
+    <input asp-for="@Model.Search" placeholder="キーワードで検索" />
+    <input asp-for="@Model.IsLentOnly" />
+    <label asp-for="@Model.IsLentOnly">貸出中のみ</label>
+    <button type="submit" class="btn btn-secondary">検索</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>蔵書ID</th>
+            <th>ISBN</th>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>出版社</th>
+            <th>カテゴリ</th>
+            <th>状態</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Books != null)
+        {
+            @foreach (Book item in Model.Books)
+            {
+                <tr>
+                    @* TODO：以下のXXXの部分を正しく書き直すこと *@
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>XXX</td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="/Books/Detail?BookId=@item.BookId">詳細</a>
+                        <a class="btn btn-outline-primary" href="/Books/Edit?BookId=@item.BookId">編集</a>
+                        <a class="btn btn-outline-primary" href="/Books/Delete?BookId=@item.BookId">削除</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+﻿@page
+@model Other.Pages.PokemonListModel
+@{
+}
+
+<h1>ポケモン一覧</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>画像</th>
+            <th>図鑑番号</th>
+            <th>日本語名</th>
+            <th>HP</th>
+            <th>攻撃</th>
+            <th>防御</th>
+            <th>特攻</th>
+            <th>特防</th>
+            <th>素早さ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pokemon in Model.Pokemons)
+        {
+            <tr>
+                <td>
+                    <img src="@pokemon.ImageUrl" width="96" />
+                </td>
+                <td>@pokemon.Id</td>
+                <td>@pokemon.JapaneseName</td>
+                <td>@pokemon.Hp</td>
+                <td>@pokemon.Attack</td>
+                <td>@pokemon.Defense</td>
+                <td>@pokemon.SpecialAttack</td>
+                <td>@pokemon.SpecialDefense</td>
+                <td>@pokemon.Speed</td>
+            </tr>
+        }
+    </tbody>
+</table>

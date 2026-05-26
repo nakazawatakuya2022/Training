@@ -33,11 +33,13 @@ namespace HimawariRentalWeb.Pages.RentalItems
         /// <summary>
         /// 一覧表示するレンタル品データのリスト
         /// </summary>
-        public List<RentalItem>? RentalItems { get; set; }
+        public List<RentalItem>? RentalItems { get; set; } = new();
 
         public void OnGet()
         {
             // TODO: RentalItemsプロパティのデータを正しくセットすること
+            RentalItems =
+                _rentalItemDataService.GetList(Search, IsRentalOnly);
         }
     }
 }

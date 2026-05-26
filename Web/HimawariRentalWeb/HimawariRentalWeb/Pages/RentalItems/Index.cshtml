@@ -35,18 +35,17 @@
             @foreach (RentalItem item in Model.RentalItems)
             {
                 <tr>
-                    @* TODO：以下のXXXの部分を正しく書き直すこと *@
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
+                    <td>@item.RentalItemId</td>
+                    <td>@item.ManagementCode</td>
+                    <td>@item.ItemName</td>
+                    <td>@item.Maker</td>
+                    <td>@item.StorageLocation</td>
+                    <td>@item.CategoryName</td>
+                    <td>@(item.RentalFlag ? "レンタル中" : "利用可")</td>
                     <td>
-                        <a class="btn btn-outline-primary" href="/RentalItems/Detail?RentalItemId=@item.RentalItemId">詳細</a>
-                        <a class="btn btn-outline-primary" href="/RentalItems/Edit?RentalItemId=@item.RentalItemId">編集</a>
-                        <a class="btn btn-outline-primary" href="/RentalItems/Delete?RentalItemId=@item.RentalItemId">削除</a>
+                        <a class="btn btn-outline-primary" href="/RentalItems/Detail?id=@item.RentalItemId">詳細</a>
+                        <a class="btn btn-outline-primary" href="/RentalItems/Edit?id=@item.RentalItemId">編集</a>
+                        <a class="btn btn-outline-primary" href="/RentalItems/Delete?id=@item.RentalItemId">削除</a>
                     </td>
                 </tr>
             }

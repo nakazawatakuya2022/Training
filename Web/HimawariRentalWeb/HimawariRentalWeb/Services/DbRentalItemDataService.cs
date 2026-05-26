@@ -22,33 +22,33 @@ namespace HimawariRentalWeb.Services
 
                 // 実行するSQL文
                 string sql = @"
-SELECT  *
-FROM rental_items b 
-JOIN categories c
-  ON b.category_id = c.category_id
-WHERE 1 = 1
-";
+                SELECT  *
+                FROM rental_items b 
+                JOIN categories c
+                  ON b.category_id = c.category_id
+                WHERE 1 = 1
+                ";
                 // 検索文字列の指定がある場合
                 if (search != null)
                 {
                     sql += @"
-AND (
-  management_code LIKE @Search OR 
-  item_name LIKE @Search OR  
-  maker LIKE @Search OR
-  storage_location LIKE @Search
-)
-";
+                AND (
+                  management_code LIKE @Search OR 
+                  item_name LIKE @Search OR  
+                  maker LIKE @Search OR
+                  storage_location LIKE @Search
+                )
+                ";
                 }
                 if (isRentalOnly)
                 {
                     sql += @"
-AND rental_flag = 1
-";
+                AND rental_flag = 1
+                ";
                 }
                 sql += @"
-ORDER BY rental_item_id;
-";
+                ORDER BY rental_item_id;
+                ";
                 // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command = new SqlCommand(sql, connection);
                 // SELECT文のパラメータへ置き換える値を指定
@@ -90,11 +90,11 @@ ORDER BY rental_item_id;
                 connection.Open();
                 // 実行するSQL文
                 string sql = @"
-SELECT *
-FROM rental_items b JOIN categories c
-  ON b.category_id = c.category_id
-WHERE b.rental_item_id = @RentalItemId;
-";
+                    SELECT *
+                    FROM rental_items b JOIN categories c
+                      ON b.category_id = c.category_id
+                    WHERE b.rental_item_id = @RentalItemId;
+                    ";
                 // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@RentalItemId", id);
