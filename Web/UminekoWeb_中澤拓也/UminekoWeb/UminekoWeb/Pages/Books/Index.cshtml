@@ -1,4 +1,5 @@
 ﻿@page
+<!--Modelsのプロパティを使用するために必要-->
 @using UminekoWeb.Models
 @model UminekoWeb.Pages.Books.IndexModel
 @{
@@ -35,14 +36,14 @@
             @foreach (Book item in Model.Books)
             {
                 <tr>
-                    @* TODO：以下のXXXの部分を正しく書き直すこと *@
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
-                    <td>XXX</td>
+                    <td>@item.BookId</td>
+                    <td>@item.Isbn</td>
+                    <td>@item.Title</td>
+                    <td>@item.Author</td>
+                    <td>@item.Publisher</td>
+                    <td>@item.CategoryName</td>
+                    <!--LentFlagがtrue(1)の場合「貸出中」false(0)の場合「利用可」を表示-->
+                    <td>@(item.LentFlag ? "貸出中" : "利用可")</td>
                     <td>
                         <a class="btn btn-outline-primary" href="/Books/Detail?BookId=@item.BookId">詳細</a>
                         <a class="btn btn-outline-primary" href="/Books/Edit?BookId=@item.BookId">編集</a>

@@ -17,6 +17,12 @@ namespace UminekoWeb
             // ICategoryDataServiceが必要な時はDbCategoryDataServiceを使うようDIコンテナに登録
             builder.Services.AddTransient<ICategoryDataService, DbCategoryDataService>();
 
+            // ILentHistoryDataServiceが必要な時はDbLentHistoryDataServiceを使うようDIコンテナに登録
+            builder.Services.AddTransient<ILentHistoryDataService,DbLentHistoryDataService>();
+
+            // IMemberDataServiceが必要な時はDbMemberDataServiceを使うようDIコンテナに登録
+            builder.Services.AddTransient<IMemberDataService,DbMemberDataService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

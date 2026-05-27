@@ -40,6 +40,5 @@ namespace UminekoWeb.Services
         /// </summary>
         /// <param name="id">蔵書ID</param>
         public void DeleteById(int id);
-
     }
 }

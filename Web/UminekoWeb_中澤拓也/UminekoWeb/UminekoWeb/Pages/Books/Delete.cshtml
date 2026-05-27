@@ -1,0 +1,70 @@
+﻿@page
+<!--Modelsのプロパティを使用するために必要-->
+<!--今回はModels型を使わないのでいらない-->
+@using UminekoWeb.Models
+@model UminekoWeb.Pages.Books.DeleteModel
+@{
+    ViewData["Title"] = "蔵書削除";
+}
+
+<h1>蔵書削除</h1>
+<hr />
+
+@if (Model.Book != null)
+{
+    <form method="post">
+        <input type="hidden" asp-for="@Model.Book.BookId" />
+
+        <div class="form-group mb-2">
+            <!--BookIdを保持-->
+            <!--BookIdはユーザーが変更できないようにreadonly属性を付与-->
+            <label asp-for="@Model.Book.BookId" class="form-label">蔵書ID</label>
+            <input asp-for="@Model.Book.BookId" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="@Model.Book.Isbn" class="form-label">ISBN</label>
+            <input asp-for="@Model.Book.Isbn" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="@Model.Book.Title" class="form-label">タイトル</label>
+            <input asp-for="@Model.Book.Title" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="@Model.Book.Author" class="form-label">著者</label>
+            <input asp-for="@Model.Book.Author" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="@Model.Book.Publisher" class="form-label">出版社</label>
+            <input asp-for="@Model.Book.Publisher" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="@Model.Book.PurchaseDate" class="form-label">購入日</label>
+            <input asp-for="@Model.Book.PurchaseDate" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="@Model.Book.PurchasePrice" class="form-label">購入価格</label>
+            <input asp-for="@Model.Book.PurchasePrice" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="@Model.Book.Memo" class="form-label">メモ</label>
+            <input asp-for="@Model.Book.Memo" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="@Model.Book.CategoryName" class="form-label">カテゴリ</label>
+            <input asp-for="@Model.Book.CategoryName" class="form-control" readonly />
+        </div>
+
+        <button type="submit" class="btn btn-danger">削除</button>
+        <hr />
+
+        <a asp-page="Index" class="btn btn-outline-primary">一覧に戻る</a>
+    </form>
+}

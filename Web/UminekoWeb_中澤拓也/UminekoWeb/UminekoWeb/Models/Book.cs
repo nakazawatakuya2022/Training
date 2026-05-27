@@ -10,9 +10,18 @@ namespace UminekoWeb.Models
         public Book() { }
 
 
-        public Book(int bookId, string isbn, string title, string author,
-                    string publisher, DateTime purchaseDate, int purchasePrice,
-                    string? memo, int categoryId, string categoryName, bool lentFlag)
+        public Book(
+            int bookId, 
+            string isbn, 
+            string title, 
+            string author,
+            string publisher,
+            DateTime purchaseDate, 
+            int purchasePrice,
+            string? memo, 
+            int categoryId, 
+            string categoryName, 
+            bool lentFlag)
         {
             BookId = bookId;
             Isbn = isbn;

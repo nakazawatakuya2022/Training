@@ -1,0 +1,80 @@
+﻿@page
+<!--Modelsのプロパティを使用するために必要-->
+@using UminekoWeb.Models
+@model UminekoWeb.Pages.Books.EditModel
+@{
+    ViewData["Title"] = "蔵書編集";
+}
+
+<h1>蔵書編集</h1>
+<hr />
+
+<form method="post">
+    <div class="form-group mb-2">
+        <!--BookIdを保持-->
+        <!--BookIdはユーザーが変更できないようにreadonly属性を付与-->
+        <label asp-for="@Model.Book.BookId" class="form-label">蔵書ID</label>
+        <input asp-for="@Model.Book.BookId" class="form-control" readonly />
+    </div>
+
+    <input type="hidden" asp-for="@Model.Book.LentFlag" />
+
+    <div class="form-group mb-2">
+        <label asp-for="@Model.Book.Isbn" class="form-label">ISBN</label>
+        <input asp-for="@Model.Book.Isbn" class="form-control" />
+        <span asp-validation-for="@Model.Book.Isbn" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="@Model.Book.Title" class="form-label">タイトル</label>
+        <input asp-for="@Model.Book.Title" class="form-control" />
+        <span asp-validation-for="@Model.Book.Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="@Model.Book.Author" class="form-label">著者</label>
+        <input asp-for="@Model.Book.Author" class="form-control" />
+        <span asp-validation-for="@Model.Book.Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="@Model.Book.Publisher" class="form-label">出版社</label>
+        <input asp-for="@Model.Book.Publisher" class="form-control" />
+        <span asp-validation-for="@Model.Book.Publisher" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="@Model.Book.PurchaseDate" class="form-label">購入日</label>
+        <input asp-for="@Model.Book.PurchaseDate" class="form-control" />
+        <span asp-validation-for="@Model.Book.PurchaseDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="@Model.Book.PurchasePrice" class="form-label">購入価格</label>
+        <input asp-for="@Model.Book.PurchasePrice" class="form-control" />
+        <span asp-validation-for="@Model.Book.PurchasePrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="@Model.Book.Memo" class="form-label">メモ</label>
+        <input asp-for="@Model.Book.Memo" class="form-control" />
+        <span asp-validation-for="@Model.Book.Memo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="@Model.Book.CategoryId" class="form-label">カテゴリ</label>
+        <select asp-for="@Model.Book.CategoryId" class="form-control">
+            @foreach (Category category in Model.Categories)
+            {
+                <option value="@category.CategoryId">
+                    @category.CategoryName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="@Model.Book.CategoryId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">更新</button>
+    <hr />
+    <a asp-page="Index" class="btn btn-secondary">一覧に戻る</a>
+</form>

@@ -22,33 +22,33 @@ namespace UminekoWeb.Services
 
                 // 実行するSQL文
                 string sql = @"
-SELECT  *
-FROM books b 
-JOIN categories c
-  ON b.category_id = c.category_id
-WHERE 1 = 1
-";
+                    SELECT  *
+                    FROM books b 
+                    JOIN categories c
+                      ON b.category_id = c.category_id
+                    WHERE 1 = 1
+                    ";
                 // 検索文字列の指定がある場合
                 if (search != null)
                 {
                     sql += @"
-AND (
-  isbn LIKE @Search OR 
-  title LIKE @Search OR  
-  author LIKE @Search OR
-  publisher LIKE @Search
-)
-";
+                        AND (
+                          isbn LIKE @Search OR 
+                          title LIKE @Search OR  
+                          author LIKE @Search OR
+                          publisher LIKE @Search
+                        )
+                        ";
                 }
                 if (isLentOnly)
                 {
                     sql += @"
-AND lent_flag = 1
-";
+                        AND lent_flag = 1
+                        ";
                 }
-                sql += @"
-ORDER BY book_id;
-";
+                    sql += @"
+                        ORDER BY book_id;
+                        ";
                 // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command = new SqlCommand(sql, connection);
                 // SELECT文のパラメータへ置き換える値を指定
@@ -71,6 +71,7 @@ ORDER BY book_id;
                             reader.IsDBNull("memo") ? null : reader.GetString("memo"),
                             reader.GetInt32("category_id"),
                             reader.GetString("category_name"),
+                            // tinyint型のlent_flagをbool型のLentFlagに変換
                             reader.GetByte("lent_flag") == ON_LENT
                             );
                         list.Add(book);
@@ -90,11 +91,11 @@ ORDER BY book_id;
                 connection.Open();
                 // 実行するSQL文
                 string sql = @"
-SELECT *
-FROM books b JOIN categories c
-  ON b.category_id = c.category_id
-WHERE b.book_id = @BookId;
-";
+                    SELECT *
+                    FROM books b JOIN categories c
+                      ON b.category_id = c.category_id
+                    WHERE b.book_id = @BookId;
+                    ";
                 // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@BookId", id);
@@ -131,9 +132,12 @@ WHERE b.book_id = @BookId;
                 connection.Open();
                 // 実行するSQL文
                 string sql = @"
-INSERT INTO books (isbn, title, author, publisher, purchase_date, purchase_price, memo, category_id, lent_flag)
-  VALUES (@Isbn, @Title, @Author, @Publisher, @PurchaseDate, @PurchasePrice, @Memo, @CategoryId, @LentFlag);
-";
+                    INSERT INTO books 
+                    (isbn, title, author, publisher, purchase_date, 
+                    purchase_price, memo, category_id, lent_flag)
+                      VALUES (@Isbn, @Title, @Author, @Publisher, 
+                    @PurchaseDate, @PurchasePrice, @Memo, @CategoryId, @LentFlag);
+                    ";
                 // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command = new SqlCommand(sql, connection);
                 // プレースホルダーへ置き換える値を指定
@@ -160,19 +164,19 @@ INSERT INTO books (isbn, title, author, publisher, purchase_date, purchase_price
                 connection.Open();
                 // 実行するSQL文
                 string sql = @"
-UPDATE books
-SET
-  isbn = @Isbn,
-  title = @Title,
-  author = @Author,
-  publisher = @Publisher,
-  purchase_date = @PurchaseDate,
-  purchase_price = @PurchasePrice,
-  memo = @Memo,
-  category_id = @CategoryId,
-  lent_flag = @LentFlag
-WHERE book_id = @BookId;
-";
+                    UPDATE books
+                    SET
+                      isbn = @Isbn,
+                      title = @Title,
+                      author = @Author,
+                      publisher = @Publisher,
+                      purchase_date = @PurchaseDate,
+                      purchase_price = @PurchasePrice,
+                      memo = @Memo,
+                      category_id = @CategoryId,
+                      lent_flag = @LentFlag
+                    WHERE book_id = @BookId;
+                    ";
                 // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command = new SqlCommand(sql, connection);
                 // プレースホルダーへ置き換える値を指定

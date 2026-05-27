@@ -1,0 +1,107 @@
+﻿@page
+<!--Modelsのプロパティを使用するために必要-->
+@using UminekoWeb.Models
+@model UminekoWeb.Pages.Books.DetailModel
+@{
+    ViewData["Title"] = "蔵書詳細";
+}
+
+<h1>蔵書詳細</h1>
+<hr />
+
+@if (Model.Book != null)
+{
+    <div class="form-group mb-2">
+        <!--BookIdを保持-->
+        <!--BookIdはユーザーが変更できないようにreadonly属性を付与-->
+        <label class="form-label">蔵書ID</label>
+        <input value="@Model.Book.BookId" class="form-control" readonly />
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label class="form-label">ISBN</label>
+        <input value="@Model.Book.Isbn" class="form-control" readonly />
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label class="form-label">タイトル</label>
+        <input value="@Model.Book.Title" class="form-control" readonly />
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label class="form-label">著者</label>
+        <input value="@Model.Book.Author" class="form-control" readonly />
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label class="form-label">出版社</label>
+        <input value="@Model.Book.Publisher" class="form-control" readonly />
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label asp-for="@Model.Book.PurchaseDate" class="form-label">購入日</label>
+        <input asp-for="@Model.Book.PurchaseDate" class="form-control" readonly />
+        <span asp-validation-for="@Model.Book.PurchaseDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label asp-for="@Model.Book.PurchasePrice" class="form-label">購入価格</label>
+        <input asp-for="@Model.Book.PurchasePrice" class="form-control" readonly />
+        <span asp-validation-for="@Model.Book.PurchasePrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label asp-for="@Model.Book.Memo" class="form-label">メモ</label>
+        <textarea asp-for="@Model.Book.Memo" class="form-control" readonly></textarea>
+        <span asp-validation-for="@Model.Book.Memo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label class="form-label">カテゴリ</label>
+        <input value="@Model.Book.CategoryName" class="form-control" readonly />
+    </div>
+
+    <div class="form-group mb-2">
+        <!--ユーザーが変更できないようにreadonly属性を付与-->
+        <label class="form-label">状態</label>
+        <!--LentFlagがtrue(1)の場合「貸出中」false(0)の場合「利用可」を表示-->
+        <input value="@(Model.Book.LentFlag ? "貸出中" : "利用可")" class="form-control" readonly />
+    </div>
+
+    <hr />
+
+    <h2>貸出履歴</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>貸出日</th>
+                <th>会員コード</th>
+                <th>返却日</th>
+                <!--th>返却状態</th-->
+            </tr>
+        </thead>
+        <tbody>
+            <!--foreachで貸し出し履歴をModel.LentHistoriesから1件づつ取り出す-->
+            @foreach (LentHistory item in Model.LentHistories)
+            {
+                <tr>
+                    <td>@item.LentDate?.ToString("yyyy/MM/dd")</td>
+                    <td>@item.MemberCode</td>
+                    <td>@item.ReturnDate?.ToString("yyyy/MM/dd")</td>
+                    <!--td>@(item.HasReturned ? "返却済み" : "貸出中")</td-->
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-page="Index" class="btn btn-secondary">一覧に戻る</a>
+}

@@ -38,6 +38,9 @@ namespace UminekoWeb.Pages.Books
         public void OnGet()
         {
             // TODO: Booksプロパティのデータを正しくセットすること
+            //IBookDataServiceからDbBookDataServiceに渡りGetList実行
+            //引数は検索に使うSearchと貸し出しフラグのIsLentOnly
+            Books = _bookDataService.GetList(Search, IsLentOnly);
         }
     }
 }
