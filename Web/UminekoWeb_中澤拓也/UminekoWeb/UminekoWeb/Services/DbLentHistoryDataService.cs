@@ -67,8 +67,10 @@ namespace UminekoWeb.Services
             using (SqlConnection connection =
                 new SqlConnection(Constants.DbConnectStr))
             {
+                // データベースへ接続
                 connection.Open();
 
+                // 実行するSQL文
                 string sql = @"
                     INSERT INTO lent_histories
                         (
@@ -90,9 +92,11 @@ namespace UminekoWeb.Services
                         );
                     ";
 
+                // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command =
                     new SqlCommand(sql, connection);
 
+                // プレースホルダーへ置き換える値を指定
                 command.Parameters.AddWithValue(
                     "@MemberCode",
                     lentHistory.MemberCode);
@@ -109,6 +113,11 @@ namespace UminekoWeb.Services
                     "@ReturnDate",
                     DateTime.Today.AddDays(14));
 
+                //nullだったらDBのNULLを入れる
+                //左がnullじゃなければ左。nullなら右
+                //DBNullはC#とDBのnullが違うためDBNull.ValueでDBのnullを明示
+                //(object)をつけてどっちも object として扱う
+                //string はoblectを継承しているので object として扱える
                 command.Parameters.AddWithValue(
                     "@Memo",
                     lentHistory.Memo ?? (object)DBNull.Value);
@@ -117,6 +126,7 @@ namespace UminekoWeb.Services
                     "@HasReturned",
                     0);
 
+                // コマンドを実行
                 command.ExecuteNonQuery();
             }
         }

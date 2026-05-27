@@ -22,16 +22,16 @@ namespace UminekoWeb.Pages.Books
         }
 
         // 1行のデータ
-        public Book? Book { get; set; }
+        //OnGetの時にnewするのでここでは= new();不要
+        public Book? Book { get; set; } 
 
         // 貸し出し履歴のリスト
-        public List<LentHistory> LentHistories { get; set; }
-            = new();
+        public List<LentHistory> LentHistories { get; set; } = new();
 
         public IActionResult OnGet(int bookId)
         {
             // IBookDataServiceのGetById呼びだして1行分のデータを取得する
-            //引数はクエリパラメータからもらう
+            //引数はクエリパラメータからもらう(モデルバインディング)
             Book? data = _bookDataService.GetById(bookId);
 
             // データが取得できなかった場合はNotFoundを返す

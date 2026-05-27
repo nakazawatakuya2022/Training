@@ -4,10 +4,15 @@ using UminekoWeb.Models;
 
 namespace UminekoWeb.Services
 {
+    /// <summary>
+    /// データベースから利用者データを取得するクラス
+    /// </summary>
     public class DbMemberDataService : IMemberDataService
     {
         public List<Member> GetList()
         {
+            // 空のリストで初期化
+            //new以降省略しても書ける
             List<Member> list = new();
 
             using (SqlConnection connection =
@@ -15,6 +20,7 @@ namespace UminekoWeb.Services
             {
                 connection.Open();
 
+                //メンバーを取得
                 string sql = @"
                     SELECT
                         member_code,

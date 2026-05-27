@@ -14,6 +14,9 @@ namespace UminekoWeb.Services
         /// <returns>貸出履歴の一覧</returns>
         public List<LentHistory> GetList(int bookId);
 
+        /// <summary>
+        /// 貸し出しフラグを登録する
+        /// </summary>
         void Register(LentHistory lentHistory);
     }
 }
