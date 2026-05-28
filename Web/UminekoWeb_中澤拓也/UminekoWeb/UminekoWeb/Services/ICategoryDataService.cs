@@ -11,7 +11,7 @@ namespace UminekoWeb.Services
         /// カテゴリデータの一覧を取得する
         /// </summary>
         /// <returns>カテゴリデータのリスト</returns>
-        public List<Category> GetList();
+        List<Category> GetList();
 
     }
 }

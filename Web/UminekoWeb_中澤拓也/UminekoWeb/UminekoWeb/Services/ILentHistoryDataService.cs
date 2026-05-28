@@ -12,11 +12,16 @@ namespace UminekoWeb.Services
         /// </summary>
         /// <param name="bookId">蔵書ID</param>
         /// <returns>貸出履歴の一覧</returns>
-        public List<LentHistory> GetList(int bookId);
+        List<LentHistory> GetList(int bookId);
 
         /// <summary>
         /// 貸し出しフラグを登録する
         /// </summary>
         void Register(LentHistory lentHistory);
+
+        /// <summary>
+        /// 返却フラグを登録する
+        /// </summary>
+        void Return(int bookId);
     }
 }

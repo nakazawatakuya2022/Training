@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using UminekoWeb.Models;
 
 namespace UminekoWeb.Pages
 {
+    [TypeFilter(typeof(LoginFilter))]
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public Staff? Staff { get; set; }
 
         public void OnGet()
         {
-
+            Staff =
+                HttpContext.Items["staff"] as Staff;
         }
     }
 }

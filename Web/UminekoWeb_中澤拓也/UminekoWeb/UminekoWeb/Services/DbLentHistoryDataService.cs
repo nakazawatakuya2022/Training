@@ -62,6 +62,7 @@ namespace UminekoWeb.Services
 
             return list;
         }
+        //貸し出しのインサート
         public void Register(LentHistory lentHistory)
         {
             using (SqlConnection connection =
@@ -107,17 +108,18 @@ namespace UminekoWeb.Services
 
                 command.Parameters.AddWithValue(
                     "@LentDate",
-                    lentHistory.LentDate);
+                    DateTime.Today);
 
                 command.Parameters.AddWithValue(
                     "@ReturnDate",
                     DateTime.Today.AddDays(14));
 
-                //nullだったらDBのNULLを入れる
-                //左がnullじゃなければ左。nullなら右
-                //DBNullはC#とDBのnullが違うためDBNull.ValueでDBのnullを明示
-                //(object)をつけてどっちも object として扱う
-                //string はoblectを継承しているので object として扱える
+                // nullだったらDBのNULLを入れる
+                // 左がnullじゃなければ左。nullなら右
+                // C#のnullとDBのNULLは別物
+                // DBNull.Value でDB用のNULLを表す
+                // string と DBNull.Value の型を合わせるため
+                // (object)DBNull.Value にしている
                 command.Parameters.AddWithValue(
                     "@Memo",
                     lentHistory.Memo ?? (object)DBNull.Value);
@@ -127,6 +129,38 @@ namespace UminekoWeb.Services
                     0);
 
                 // コマンドを実行
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void Return(int bookId)
+        {
+            using (SqlConnection connection =
+                new SqlConnection(Constants.DbConnectStr))
+            {
+                connection.Open();
+
+                string sql = @"
+                    UPDATE lent_histories
+                    SET
+                        has_returned = 1,
+                        return_date = @ReturnDate
+                    WHERE
+                        book_id = @BookId
+                        AND has_returned = 0;
+                    ";
+
+                SqlCommand command =
+                    new SqlCommand(sql, connection);
+
+                command.Parameters.AddWithValue(
+                    "@ReturnDate",
+                    DateTime.Today);
+
+                command.Parameters.AddWithValue(
+                    "@BookId",
+                    bookId);
+
                 command.ExecuteNonQuery();
             }
         }

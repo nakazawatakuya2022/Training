@@ -11,6 +11,13 @@ namespace UminekoWeb
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+            // セッションの設定
+            // セッションの有効期限を30分に設定
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+
             // IBookDataServiceが必要な時はDbBookDataServiceを使うようDIコンテナに登録
             builder.Services.AddTransient<IBookDataService, DbBookDataService>();
 
@@ -23,6 +30,11 @@ namespace UminekoWeb
             // IMemberDataServiceが必要な時はDbMemberDataServiceを使うようDIコンテナに登録
             builder.Services.AddTransient<IMemberDataService,DbMemberDataService>();
 
+            // IStaffDataServiceが必要な時はDbStaffDataServiceを使うようDIコンテナに登録
+            builder.Services.AddTransient<IStaffDataService,DbStaffDataService>();
+
+            builder.Services.AddScoped<IStaffDataService,DbStaffDataService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -34,6 +46,7 @@ namespace UminekoWeb
             }
 
             app.UseHttpsRedirection();
+           
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -41,6 +54,9 @@ namespace UminekoWeb
             app.UseAuthorization();
 
             app.MapRazorPages();
+
+            // セッションミドルウェアを追加
+            app.UseSession();
 
             app.Run();
         }

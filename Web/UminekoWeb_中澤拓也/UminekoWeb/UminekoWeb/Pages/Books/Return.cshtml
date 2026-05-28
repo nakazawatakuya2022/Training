@@ -1,0 +1,43 @@
+﻿@page
+@using UminekoWeb.Models
+@model UminekoWeb.Pages.Books.ReturnModel
+@{
+    ViewData["Title"] = "返却処理";
+}
+
+<h1>返却処理</h1>
+<hr />
+
+<form method="post">
+    <div class="form-group mb-2">
+        <label class="form-label">蔵書ID</label>
+        <input class="form-control" value="@Model.Book.BookId" readonly />
+    </div>
+
+    <div class="form-group mb-2">
+        <label class="form-label">ISBN</label>
+        <input class="form-control" value="@Model.Book.Isbn" readonly />
+    </div>
+
+    <div class="form-group mb-2">
+        <label class="form-label">タイトル</label>
+        <input class="form-control" value="@Model.Book.Title" readonly />
+    </div>
+
+    <input type="hidden" name="BookId" value="@Model.Book.BookId" />
+
+    <button type="submit" class="btn btn-secondary">返却</button>
+</form>
+
+<hr />
+
+<a asp-page="/Books/Detail"
+   asp-route-bookId="@Model.Book.BookId"
+   class="btn btn-outline-primary">
+    蔵書詳細に戻る
+</a>
+
+<a asp-page="/Books/Index"
+   class="btn btn-outline-primary">
+    蔵書一覧に戻る
+</a>

@@ -7,8 +7,10 @@ namespace UminekoWeb.Models
     /// </summary>
     public class Category
     {
+        // 新規登録用のコンストラクタ
         public Category() { }
 
+        // 一覧表示用のコンストラクタ
         public Category(int categoryId, string categoryName)
         {
             CategoryId = categoryId;

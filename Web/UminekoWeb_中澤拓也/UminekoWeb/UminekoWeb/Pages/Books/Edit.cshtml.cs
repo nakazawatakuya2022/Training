@@ -7,6 +7,8 @@ using UminekoWeb.Services;
 
 namespace UminekoWeb.Pages.Books
 {
+    [TypeFilter(typeof(LoginFilter))]
+    [TypeFilter(typeof(AdminFilter))]
     public class EditModel : PageModel
     {
         // IBookDataServiceとICategoryDataServiceのインスタンスを保持するためのフィールド

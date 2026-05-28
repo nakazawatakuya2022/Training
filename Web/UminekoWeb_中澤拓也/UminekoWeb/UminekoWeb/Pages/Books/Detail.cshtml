@@ -77,7 +77,45 @@
     </div>
 
     <hr />
+    @if (Model.Book.LentFlag)
+    {
+        <a asp-page="/Books/Edit"
+           asp-route-bookId="@Model.Book.BookId"
+           class="btn btn-outline-primary">
+            編集
+        </a>
 
+        <a asp-page="/Books/Return"
+           asp-route-bookId="@Model.Book.BookId"
+           class="btn btn-outline-primary">
+            返却処理
+        </a>
+
+        <a asp-page="/Books/Index"
+           class="btn btn-outline-primary">
+            一覧に戻る
+        </a>
+    }
+    else
+    {
+        <a asp-page="/Books/Edit"
+           asp-route-bookId="@Model.Book.BookId"
+           class="btn btn-outline-primary">
+            編集
+        </a>
+
+        <a asp-page="/Books/Lend"
+           asp-route-bookId="@Model.Book.BookId"
+           class="btn btn-outline-primary">
+            貸出処理
+        </a>
+
+        <a asp-page="/Books/Index"
+           class="btn btn-outline-primary">
+            一覧に戻る
+        </a>
+    }
+    <hr />
     <h2>貸出履歴</h2>
 
     <table class="table">

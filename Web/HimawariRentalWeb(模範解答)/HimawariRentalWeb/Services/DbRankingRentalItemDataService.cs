@@ -19,27 +19,27 @@ namespace HimawariRentalWeb.Services
 
                 // 実行するSQL文
                 string sql = @"
-WITH rental_times AS (
-SELECT 
-  b.rental_item_id,
-  COUNT(*) AS times
-FROM rental_histories lh
-JOIN rental_items b
-  ON lh.rental_item_id = b.rental_item_id
-WHERE lh.rental_date BETWEEN @StartDate AND @EndDate
-GROUP BY b.rental_item_id
-)
+                    WITH rental_times AS (
+                    SELECT 
+                      b.rental_item_id,
+                      COUNT(*) AS times
+                    FROM rental_histories lh
+                    JOIN rental_items b
+                      ON lh.rental_item_id = b.rental_item_id
+                    WHERE lh.rental_date BETWEEN @StartDate AND @EndDate
+                    GROUP BY b.rental_item_id
+                    )
 
-SELECT TOP 10
-  b.*,
-  c.category_name,
-  lt.times
-FROM rental_items b
-JOIN categories c
-  ON b.category_id = c.category_id
-JOIN rental_times lt
-  ON b.rental_item_id = lt.rental_item_id
-ORDER BY lt.times DESC;
+                    SELECT TOP 10
+                      b.*,
+                      c.category_name,
+                      lt.times
+                    FROM rental_items b
+                    JOIN categories c
+                      ON b.category_id = c.category_id
+                    JOIN rental_times lt
+                      ON b.rental_item_id = lt.rental_item_id
+                    ORDER BY lt.times DESC;
                 ";
                 // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command = new SqlCommand(sql, connection);

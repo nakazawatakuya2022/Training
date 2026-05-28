@@ -6,6 +6,7 @@ using UminekoWeb.Services;
 
 namespace UminekoWeb.Pages.Books
 {
+    [TypeFilter(typeof(LoginFilter))]
     public class LendModel : PageModel
     {
         // インスタンスを保持するためのフィールド
@@ -63,37 +64,72 @@ namespace UminekoWeb.Pages.Books
             // 画面表示準備
             return Page();
         }
-        // 明日はここから！！！！！！
+
+        //貸し出しのインサート
         public IActionResult OnPost()
         {
+            // 入力値のバリデーションチェック
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            // BookIdのnullチェック
             if (LentHistory.BookId == null)
             {
                 return NotFound();
             }
 
-            Book? book =
-                _bookDataService.GetById(
-                    LentHistory.BookId.Value);
+            // bookIdはint?型なので.Valueでintを取り出して入れる
+            int bookId = LentHistory.BookId.Value;
 
+            // 1行分のデータを取り出し
+            Book? book =
+                _bookDataService.GetById(bookId);
+
+            // bookのデータが取り出せなかった場合NotFound()を返す
             if (book == null)
             {
                 return NotFound();
             }
 
-            LentHistory.LentDate =
-                DateTime.Today;
+            //貸し出しのインサート
+            try
+            {
+                // 貸出履歴テーブルへデータを登録する
+                _lentHistoryDataService.Register(LentHistory);
+            }
+            catch
+            {
+                // DB登録時にエラーが発生した場合
+                // 画面にエラーメッセージを表示する
+                // ""はモデル全体に対するエラーを表す
+                ModelState.AddModelError(
+                    "",
+                    "同じ会員が同じ蔵書を同じ日に貸出することはできません。");
 
-            LentHistory.HasReturned =
-                false;
+                // return Page()すると画面を再表示するため、
+                // 再度画面表示に必要な情報をセットし直す
 
-            _lentHistoryDataService.Register(
-                LentHistory);
+                // 蔵書情報を再セット
+                Book = book;
 
-            book.LentFlag =
-                true;
+                // 貸出履歴へ蔵書IDを再セット
+                LentHistory.BookId =book.BookId;
 
+                // 会員一覧を再取得（プルダウン表示用）
+                Members = _memberDataService.GetList();
+
+                // 処理は何も行わず画面を再表示
+                return Page();
+            }
+
+            //貸出フラグを立てる
+            book.LentFlag = true;
+
+            //貸出フラグをもって更新する
             _bookDataService.Update(book);
 
+            //詳細画面にリダイレクトする
             return RedirectToPage(
                 "/Books/Detail",
                 new { BookId = book.BookId });

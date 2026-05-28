@@ -5,6 +5,7 @@ using UminekoWeb.Services;
 
 namespace UminekoWeb.Pages.Books
 {
+    [TypeFilter(typeof(LoginFilter))]
     public class IndexModel : PageModel
     {
         private readonly IBookDataService _bookDataService;

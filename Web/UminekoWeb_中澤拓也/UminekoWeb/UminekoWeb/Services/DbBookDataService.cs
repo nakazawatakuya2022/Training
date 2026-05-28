@@ -9,12 +9,14 @@ namespace UminekoWeb.Services
     /// </summary>
     public class DbBookDataService : IBookDataService
     {
-        private const byte ON_LENT = 1;  // 貸出中
+        private const byte ON_LENT = 1;  // 貸出中フラグ
 
         public List<Book> GetList(string? search, bool isLentOnly)
         {
             // 空のリストで初期化
+            //reader.Read()のループ内でBookのインスタンスを生成してこのリストに追加していく
             List<Book> list = new List<Book>();
+
             using (SqlConnection connection = new SqlConnection(Constants.DbConnectStr))
             {
                 // データベースへ接続
@@ -96,9 +98,11 @@ namespace UminekoWeb.Services
                       ON b.category_id = c.category_id
                     WHERE b.book_id = @BookId;
                     ";
+                
                 // コマンドを生成（SQL文とコネクションを指定）
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@BookId", id);
+                
                 // SQLコマンドを実行し結果をリーダーに入れる
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

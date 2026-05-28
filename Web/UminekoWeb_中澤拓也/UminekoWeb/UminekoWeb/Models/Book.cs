@@ -9,7 +9,6 @@ namespace UminekoWeb.Models
     {
         public Book() { }
 
-
         public Book(
             int bookId, 
             string isbn, 

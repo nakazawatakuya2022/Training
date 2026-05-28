@@ -13,7 +13,7 @@ namespace UminekoWeb.Services
         /// <param name="search">検索文字列</param>
         /// <param name="isLentOnly">貸出中のみで絞込むフラグ</param>
         /// <returns>書籍データの一覧</returns>
-        public List<Book> GetList(string? search, bool isLentOnly);
+        List<Book> GetList(string? search, bool isLentOnly);
 
         /// <summary>
         /// 1件分の蔵書データを取得
@@ -21,24 +21,24 @@ namespace UminekoWeb.Services
         /// <param name="id">蔵書ID</param>
         /// <returns>蔵書データ. 一致するものが無ければnullが返る</returns>
         /// 
-        public Book? GetById(int id);
+        Book? GetById(int id);
 
         /// <summary>
         /// 1件分の蔵書データを登録する
         /// </summary>
         /// <param name="book"></param>
-        public void Register(Book book);
+        void Register(Book book);
 
         /// <summary>
         /// 1件分の蔵書データを更新する.
         /// </summary>
         /// <param name="book"></param>
-        public void Update(Book book);
+        void Update(Book book);
 
         /// <summary>
         /// 蔵書IDに一致する1件分の蔵書データを削除する.
         /// </summary>
         /// <param name="id">蔵書ID</param>
-        public void DeleteById(int id);
+        void DeleteById(int id);
     }
 }

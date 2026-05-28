@@ -1,10 +1,18 @@
 ﻿@page
-@using UminekoWeb.Models;
-@model IndexModel
+@model UminekoWeb.Pages.IndexModel
 @{
-    ViewData["Title"] = "Topページ";
+    ViewData["Title"] = "トップ";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
+    @if (Model.Staff != null)
+    {
+        <h2>@Model.Staff.StaffId</h2>
+        <h2>@Model.Staff.StaffName</h2>
+        <h2>
+            @(Model.Staff.IsAdmin() ? "(管理者)" : "(一般職員)")
+        </h2>
+    }
 </div>
