@@ -1,0 +1,54 @@
+﻿@page
+@model YokoamiPetWeb.Pages.Histories.IndexModel
+@{
+    ViewData["Title"] = "実施サービス一覧";
+}
+
+<h1>実施サービス一覧</h1>
+
+<a asp-page="./Create" class="btn btn-primary">
+    新規追加
+</a>
+
+@if (Model.Histories.Count == 0)
+{
+    <p>実施サービス情報は登録されていません。</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>実施サービスID</th>
+                <th>顧客名</th>
+                <th>ペット名</th>
+                <th>サービス名</th>
+                <th>料金</th>
+                <th>実施日時</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Histories)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.OwnerName</td>
+                    <td>@item.PetName</td>
+                    <td>@item.ServiceName</td>
+                    <td>@item.Price</td>
+                    <td>@item.ServiceDate?.ToString("yyyy/MM/dd HH:mm")</td>
+                    <td>
+                        <a asp-page="./Edit"asp-route-id="@item.Id"
+                           class="btn btn-warning">更新
+                        </a>
+                        |
+                        <a asp-page="./Delete"asp-route-id="@item.Id"
+                           class="btn btn-danger">削除
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

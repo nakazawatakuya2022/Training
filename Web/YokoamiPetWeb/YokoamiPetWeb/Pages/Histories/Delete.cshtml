@@ -1,0 +1,49 @@
+﻿@page
+@model YokoamiPetWeb.Pages.Histories.DeleteModel
+
+@{
+    ViewData["Title"] = "実施サービス削除";
+}
+
+<h1>実施サービス削除</h1>
+
+<p>以下の実施サービス情報を削除します。よろしいですか？</p>
+
+<table class="table">
+    <tr>
+        <th>実施サービスID</th>
+        <td>@Model.History.Id</td>
+    </tr>
+    <tr>
+        <th>顧客名</th>
+        <td>@Model.History.OwnerName</td>
+    </tr>
+    <tr>
+        <th>ペット名</th>
+        <td>@Model.History.PetName</td>
+    </tr>
+    <tr>
+        <th>サービス名</th>
+        <td>@Model.History.ServiceName</td>
+    </tr>
+    <tr>
+        <th>料金</th>
+        <td>@Model.History.Price</td>
+    </tr>
+    <tr>
+        <th>実施日時</th>
+        <td>@Model.History.ServiceDate?.ToString("yyyy/MM/dd HH:mm")</td>
+    </tr>
+</table>
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.History.Id" />
+
+    <button type="submit" class="btn btn-danger">
+        削除
+    </button>
+
+    <a asp-page="./Index" class="btn btn-secondary">
+        戻る
+    </a>
+</form>
