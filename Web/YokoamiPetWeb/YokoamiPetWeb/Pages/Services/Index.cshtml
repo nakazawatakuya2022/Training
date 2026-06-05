@@ -1,0 +1,49 @@
+﻿@page
+@model YokoamiPetWeb.Pages.Services.IndexModel
+
+@{
+    ViewData["Title"] = "サービス一覧";
+}
+
+<h1>サービス一覧</h1>
+
+<p>
+    <a asp-page="./Create" class="btn btn-primary">新規追加</a>
+</p>
+
+@if (Model.Services.Count == 0)
+{
+    <p>サービス情報は登録されていません。</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>サービスID</th>
+                <th>サービス名</th>
+                <th>料金</th>
+                <th>ステータス</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var service in Model.Services)
+            {
+                <tr>
+                    <td>@service.Id</td>
+                    <td>@service.Name</td>
+                    <td>@service.Price</td>
+                    <td>@(service.Status ? "実施中" : "準備中")</td>
+                    <td>
+                        <a asp-page="./Edit"
+                           asp-route-id="@service.Id"
+                           class="btn btn-warning">
+                            更新
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

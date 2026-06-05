@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="YokoamiPetWeb/YokoamiPetWeb.csproj" />
+  <Project Path="YokoamiPetWebTest/YokoamiPetWebTest.csproj" Id="22d9e6a8-030a-4357-8ff4-1f42677c1c18" />
 </Solution>

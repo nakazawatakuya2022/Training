@@ -1,4 +1,6 @@
-﻿namespace YokoamiPetWeb.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace YokoamiPetWeb.Models
 {
     /// <summary>
     /// サービス情報を管理するモデル
@@ -13,11 +15,13 @@
         /// <summary>
         /// サービス名
         /// </summary>
+        [Required(ErrorMessage = "サービス名を入力してください")]
         public string? Name { get; set; }
 
         /// <summary>
         /// 料金
         /// </summary>
+        [Required(ErrorMessage = "料金を入力してください")]
         public int? Price { get; set; }
 
         /// <summary>

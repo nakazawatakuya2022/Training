@@ -41,7 +41,7 @@ namespace YokoamiPetWeb.Services
                         ON p.owner_id = o.id
                     JOIN service s
                         ON h.service_id = s.id
-                    ORDER BY h.service_date ASC
+                    ORDER BY h.service_date DESC, h.id DESC
                     ";
 
                 // コマンドを生成（SQL文とコネクションを指定）

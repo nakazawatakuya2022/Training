@@ -1,0 +1,59 @@
+﻿@page
+@model YokoamiPetWeb.Pages.Services.EditModel
+
+@{
+    ViewData["Title"] = "サービス更新";
+}
+
+<h1>サービス更新</h1>
+
+<form method="post">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="Service.Id" />
+
+    <div class="mb-3">
+        <label asp-for="Service.Name" class="form-label">
+            サービス名
+        </label>
+
+        <input asp-for="Service.Name" class="form-control" />
+
+        <span asp-validation-for="Service.Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Service.Price" class="form-label">
+            料金
+        </label>
+
+        <input asp-for="Service.Price"
+               type="number"
+               class="form-control" />
+
+        <span asp-validation-for="Service.Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Service.Status" class="form-label">
+            ステータス
+        </label>
+
+        <select asp-for="Service.Status" class="form-control">
+            <option value="true">実施中</option>
+            <option value="false">準備中</option>
+        </select>
+
+        <span asp-validation-for="Service.Status" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-warning">
+        更新
+    </button>
+
+    <a asp-page="./Index" class="btn btn-secondary">
+        戻る
+    </a>
+
+</form>

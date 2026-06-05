@@ -1,4 +1,6 @@
-﻿namespace YokoamiPetWeb.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace YokoamiPetWeb.Models
 {
     /// <summary>
     /// 実施サービス履歴を管理するモデル
@@ -13,16 +15,19 @@
         /// <summary>
         /// ペットID
         /// </summary>
+        [Required(ErrorMessage = "ペットを選択してください")]
         public int? PetId { get; set; }
 
         /// <summary>
         /// サービスID
         /// </summary>
+        [Required(ErrorMessage = "サービスを選択してください")]
         public int? ServiceId { get; set; }
 
         /// <summary>
         /// 実施日時
         /// </summary>
+        [Required(ErrorMessage = "実施日時を入力してください")]
         public DateTime? ServiceDate { get; set; }
 
         /// <summary>
@@ -69,7 +74,7 @@
         }
 
         /// <summary>
-        /// コンストラクタ
+        /// 新規追加用コンストラクタ
         /// </summary>
         public History()
         {

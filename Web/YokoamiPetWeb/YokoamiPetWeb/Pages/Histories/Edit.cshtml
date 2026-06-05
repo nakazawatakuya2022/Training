@@ -9,12 +9,12 @@
 
 <form method="post">
 
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
     <input type="hidden" asp-for="History.Id" />
 
     <div class="mb-3">
-        <label asp-for="History.PetId" class="form-label">
-            ペット
-        </label>
+        <label asp-for="History.PetId" class="form-label">ペット</label>
 
         <select asp-for="History.PetId" class="form-control">
             @foreach (var pet in Model.Pets)
@@ -24,12 +24,12 @@
                 </option>
             }
         </select>
+
+        <span asp-validation-for="History.PetId" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="History.ServiceId" class="form-label">
-            サービス
-        </label>
+        <label asp-for="History.ServiceId" class="form-label">サービス</label>
 
         <select asp-for="History.ServiceId" class="form-control">
             @foreach (var service in Model.Services)
@@ -39,16 +39,18 @@
                 </option>
             }
         </select>
+
+        <span asp-validation-for="History.ServiceId" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="History.ServiceDate" class="form-label">
-            実施日時
-        </label>
+        <label asp-for="History.ServiceDate" class="form-label">実施日時</label>
 
         <input asp-for="History.ServiceDate"
                type="datetime-local"
                class="form-control" />
+
+        <span asp-validation-for="History.ServiceDate" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-warning">

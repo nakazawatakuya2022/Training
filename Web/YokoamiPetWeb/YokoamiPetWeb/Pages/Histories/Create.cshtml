@@ -8,57 +8,46 @@
 <h1>実施サービス新規追加</h1>
 
 <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="mb-3">
-        <label asp-for="History.PetId" class="form-label">
-            ペット
-        </label>
+        <label asp-for="History.PetId" class="form-label">ペット</label>
 
         <select asp-for="History.PetId" class="form-control">
             <option value="">選択してください</option>
-
             @foreach (var pet in Model.Pets)
             {
-                <option value="@pet.Id">
-                    @pet.Name (@pet.OwnerName)
-                </option>
+                <option value="@pet.Id">@pet.Name (@pet.OwnerName)</option>
             }
         </select>
+
+        <span asp-validation-for="History.PetId" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="History.ServiceId" class="form-label">
-            サービス
-        </label>
+        <label asp-for="History.ServiceId" class="form-label">サービス</label>
 
         <select asp-for="History.ServiceId" class="form-control">
             <option value="">選択してください</option>
-
             @foreach (var service in Model.Services)
             {
-                <option value="@service.Id">
-                    @service.Name
-                </option>
+                <option value="@service.Id">@service.Name</option>
             }
         </select>
+
+        <span asp-validation-for="History.ServiceId" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="History.ServiceDate" class="form-label">
-            実施日時
-        </label>
+        <label asp-for="History.ServiceDate" class="form-label">実施日時</label>
 
         <input asp-for="History.ServiceDate"
                type="datetime-local"
                class="form-control" />
+
+        <span asp-validation-for="History.ServiceDate" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">
-        登録
-    </button>
-
-    <a asp-page="./Index" class="btn btn-secondary">
-        戻る
-    </a>
-
+    <button type="submit" class="btn btn-primary">登録</button>
+    <a asp-page="./Index" class="btn btn-secondary">戻る</a>
 </form>

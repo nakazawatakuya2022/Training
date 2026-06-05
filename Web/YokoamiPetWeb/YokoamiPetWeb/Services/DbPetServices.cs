@@ -24,7 +24,7 @@ namespace YokoamiPetWeb.Services
                     FROM pet p
                     JOIN owner o
                         ON p.owner_id = o.id
-                    ORDER BY o.name, p.name
+                    ORDER BY p.id
                     ";
 
                 SqlCommand command = new SqlCommand(sql, connection);
